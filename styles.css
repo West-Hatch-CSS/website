@@ -132,3 +132,48 @@ footer {
 
 
 
+/* Progress Bar */
+.progress-bar {
+    width: 100%;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    margin: 20px 0;
+    height: 30px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.progress {
+    height: 100%;
+    background-color: #4caf50;
+    border-radius: 5px;
+    line-height: 30px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Milestones */
+.milestones {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.milestones li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Color only the status text (inside <strong>) */
+.milestones li strong.completed {
+    color: green; /* Green for completed milestones */
+}
+
+.milestones li strong.in-progress {
+    color: orange; /* Orange for in-progress milestones */
+}
+
+.milestones li strong.upcoming {
+    color: grey; /* Grey for upcoming milestones */
+}
+
