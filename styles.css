@@ -9,92 +9,182 @@
     src: url('lato.ttf') format('truetype');
 }
 
-
-
-h1, h2, h3 {
-    font-family: 'lato', sans-serif;
-}
-
-h2.page-title {
-    color: #ffffff;
-    text-align: left;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    padding-left: 20px;
-}
-nav {
-    font-family: 'lato-light', sans-serif;
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     font-family: 'lato', sans-serif;
-    margin: 0;
-    padding: 0;
     background-color: #ad2b2b;
 }
 
+/* Header styles */
 header {
     background: #ad2b2b;
-    color: #ffffff;
-    padding: 10px 0;
-    text-align: center; /* Center the text in the header */
-    min-height: 100px;  /* Set a minimum height for the header */
+    width: 100%;
+    z-index: 1000;
+    padding: 1rem 0.5rem 0.5rem; /* More padding on top, less on bottom */
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem; /* Drastically reduced from 1rem */
 }
 
-.logo-title {
-    display: flex;                /* Use Flexbox for alignment */
-    align-items: center;          /* Center items vertically */
-    justify-content: center;      /* Center items horizontally */
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Changed from space-between to center */
+    align-items: center;
+    text-align: center; /* Added for better centering */
+    padding: 0 1rem; /* Add horizontal padding */
+    white-space: nowrap; /* Prevent title from wrapping unnecessarily */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
 }
 
 #logo {
-    width: 70px;                  /* Set a fixed width for the logo */
-    height: auto;                 /* Maintain aspect ratio */
-    margin-right: 10px;           /* Space between logo and title */
-    background-color: transparent; /* Ensure the logo background is transparent */
+    width: 60px; /* Increased from 40px */
+    height: 55px; /* Increased from 40px */
+}
+
+.site-title {
+    color: white;
+    font-size: 1.8rem; /* Increased from 1.6rem */
+}
+
+/* Navigation */
+nav {
+    position: static;
+    background: none;
+    padding: 0 0 0.25rem 0; /* Added small padding at bottom only */
+    margin: 0; /* Remove margin */
 }
 
 nav ul {
-    list-style: none;             /* Remove default list styles */
-    padding: 0;                   /* Remove padding */
-    margin: 0;                    /* Remove margin */
+    display: flex;
+    justify-content: center; /* Change back to center */
+    gap: 0.75rem; /* Reduced from 1.5rem for desktop */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-width: 600px; /* Reduced from 900px to bring items closer together */
+    margin: 0 auto;
+    flex-wrap: nowrap; /* Prevent menu items from wrapping */
+    white-space: nowrap; /* Force single line */
+    overflow-x: auto; /* Allow horizontal scroll if needed */
 }
 
-nav ul li {
-    display: inline;              /* Inline list items */
-    margin: 0 15px;               /* Space between list items */
+nav ul li:first-child {
+    margin-right: 0; /* Remove the auto margin */
 }
 
 nav a {
-    color: #ffffff;               /* Link color */
-    text-decoration: none;        /* Remove underline from links */
-}
-
-nav a {
-    white-space: nowrap;  /* Prevents text wrapping */
-}
-
-nav ul li a {
-    color: #ffffff;
+    color: white;
     text-decoration: none;
-    transition: color 0.3s ease;
+    font-family: 'lato-light', sans-serif;
+    padding: 0.5rem 0.75rem; /* Reduced from 0.75rem 1rem */
+    transition: color 0.3s ease; /* Smooth color transition */
 }
 
-nav ul li a:hover {
-    color: #cccccc; /* Lighter color when hovering */
+nav a:hover {
+    color: #cccccc;
 }
+
+/* Carousel */
+.carousel {
+    width: 100%;
+    position: relative;
+    padding-top: 31%; /* 20:10 Aspect Ratio for desktop */
+    overflow: hidden;
+    border-top: 2px solid #e0e0e0;    /* Top border */
+    border-bottom: 2px solid #e0e0e0;  /* Bottom border */
+}
+
+/* Mobile styles - force override */
+@media screen and (max-width: 768px) {
+    .carousel {
+        padding-top: 37% !important; /* 100:37 ratio */
+        height: auto !important;
+    }
+}
+
+.carousel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This will crop the sides while maintaining height */
+    object-position: center; /* Centers the image horizontally */
+    display: block;
+}
+
+/* Hero Section */
+.hero-section {
+    background: transparent;
+    padding: 4rem 2rem;
+    display: grid;
+    grid-template-columns: minmax(300px, 1fr) 600px; /* Fixed width for social container */
+    max-width: 1200pc;
+    gap: 3rem;
+    width: 100%;
+    margin: 0 auto;
+    align-items: start; /* Align to top */
+}
+
+.linkp{
+    height: 98%;
+    width: 100%;
+    max-width: 99%;
+}
+
+
+
+.hero-content {
+    color: white;
+    width: 100%;
+    height: auto;
+    min-width: 300px; /* Minimum width for readability */
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+
+
+/* Main content */
+.content-grid {
+    height: auto;
+    margin: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Increased minmax first value */
+    gap: 2rem;
+    padding: 0rem;
+}
+
 section {
-    padding: 20px;
-    margin: 10px;
-    background: #ffffff;
-    border-radius: 8px;
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 /* Footer styles */
 footer {
     text-align: center;
     margin-top: 30px;
-    padding-bottom: 10px;
+    padding-bottom: 30px;
     background: #ad2b2b;
     color: #ffffff;
     position: relative;
@@ -123,21 +213,10 @@ footer {
 }
 
 /* Instagram post specific adjustments */
-.instagram-post {
-    display: flex;                 /* Use flexbox for alignment */
-    flex-direction: column;       /* Stack items vertically */
-    align-items: flex-start;      /* Align items to the left */
-    width: 100%;                  /* Full width of the parent container */
-    overflow: hidden;             /* Prevent overflow from the container */
-}
+
 
 /* Ensuring the Instagram blockquote is responsive */
-.instagram-post blockquote {
-    width: 100%;                  /* Full width of the container */
-    max-width: 540px;             /* Limit max width */
-    margin: 0 auto;               /* Center blockquote */
-    padding: 0;                   /* Remove padding to prevent extra size */
-}
+
 
 /* Ensure responsiveness on mobile */
 @media (max-width: 600px) {
@@ -152,39 +231,11 @@ footer {
     }
 
     /* Ensure the Instagram embeds are responsive */
-.instadiv .instagram-media {
-    min-width: 0 !important;
-    max-width: 100% !important;
-    width: 100% !important;
-}
-
-/* Optional: Remove left/right margins if any */
-.instadiv .instagram-media {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-}
-
-}
-
-.logo-title h1 {
-    margin: 0; /* Ensures no extra spacing is added */
-}
-
-.logo-title h1 a {
-    text-decoration: none;
-    color: inherit;
-    display: inline;
-    cursor: pointer;
-}
-
-.logo-title h1 a:hover,
-.logo-title h1 a:focus {
-    text-decoration: none;
-    color: inherit;
 }
 
 .social-icon {
     display: inline-block;
+    margin-top: 0.5rem; /* Increased from 1rem */
     width: 40px;
     height: 40px;
     background-color: #ad2b2b;  /* Dark gray, almost black */
@@ -226,6 +277,8 @@ footer {
         column-gap: 0;  /* No gap between columns */
         row-gap: 10px;  /* Maintain 10px gap between rows */
     }
+
+   
 }
 
 #blog {
@@ -307,4 +360,258 @@ footer {
     .main-menu {
         margin-top: 15px;
     }
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 0.25rem; /* Reduced from 1rem */
+    }
+
+    header {
+        padding: 1rem 0.5rem 0.25rem; /* More space on top, less on bottom */
+        gap: 0.15rem; /* Drastically reduced from 1.25rem */
+        margin: 0;
+    }
+
+    
+
+    nav ul {
+        justify-content: center;
+        max-width: 100%;
+        gap: 0.35rem; /* Reduced gap further */
+        padding: 0;
+        flex-wrap: nowrap; /* Force single line */
+        overflow-x: auto; /* Allow horizontal scroll if needed */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        scrollbar-width: none; /* Hide scrollbar on Firefox */
+        padding-bottom: 10px;
+    }
+
+    /* Hide scrollbar on Webkit browsers */
+    nav ul::-webkit-scrollbar {
+        display: none;
+    }
+
+    nav ul li:first-child {
+        margin-right: 0; /* Remove extra margin on mobile */
+    }
+
+    nav a {
+        padding: 0rem 0.65rem; /* Increased from 0.25rem 0.5rem */
+        font-size: 0.9rem;
+    }
+
+    .site-title {
+        font-size: 1.4rem;
+        max-width: 100%;
+        white-space: normal; /* Allow wrapping on mobile */
+    }
+
+    #logo {
+        width: 65px; /* Larger on mobile */
+        height: 55px;
+    }
+
+    .carousel {
+        margin-top: 0; /* Remove margin-top */
+        height: 300px;
+        padding-top: 75%; /* 4:3 ratio for mobile */
+    }
+
+}
+@media screen and (max-width: 900px) {
+    .hero-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+        padding: 2rem 1rem;
+    }
+
+    .hero-image > div {
+        grid-template-columns: 1fr;
+    }
+
+
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Desktop Navigation styles (above 768px) */
+@media screen and (min-width: 768px) {
+    nav {
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center; /* Centers nav container */
+    }
+
+    nav ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        width: fit-content; /* Only take up needed space */
+    }
+
+    nav li {
+        padding: 0px 0.125rem; /* Reduced vertical padding */
+        text-align: center;
+    }
+}
+
+
+
+.social-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* Adjust as needed */
+    margin: 0 auto;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    height: 630px;
+}
+
+.social-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+}
+
+.page-title {
+    color: white;
+    padding-left: 1rem;
+}
+
+@media screen and (max-width: 1100px) {
+    .content-grid {
+        grid-template-columns: 1fr; /* Force single column */
+        margin: 2rem 1rem; /* Reduce side margins on smaller screens */
+    }
+    .hero-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .hero-content {
+        min-width: unset;
+    }
+
+    .social-container
+    {
+        height: 675px;
+    }
+
+    .instagram-media {
+        width: 100%;
+    }
+    .linkp {
+        width: 100%;
+        height: 98%;
+    }
+}
+
+html, body {
+    height: 100%;
+    margin: 0; /* Remove browser's default margins */
+}
+
+
+
+/* Mobile responsive */
+@media screen and (max-width: 830px) {
+    .social-grid {
+        grid-template-columns: 1fr;
+        padding: 0.5rem 0.5rem;
+        gap: 2rem;
+        
+    }
+    
+
+
+    .social-container {
+        width: 100%;
+        height: 515px;
+    }
+
+    .hero-section{
+        max-width: 100%;
+        height: auto;
+    }
+    .linkp {
+        height: 500px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .instap {
+        display: none !important;
+    }
+
+
+/* Add to your styles.css */
+
+
+}
+h3 {
+    margin-top: 1rem; /* Increase spacing above h3 */
+    
+}
+
+h2 {
+    margin-bottom: 2rem;
+}
+
+/* Or alternatively, remove h2 margin when followed by h3 */
+h2:has(+ h3) {
+    margin-bottom: 0;
+}
+
+h2:has(+ p) {
+    margin-bottom: 0;
+}
+
+section p {
+    margin-top: 1rem;
+}
+
+
+section ul {
+    padding-left: 2rem; /* Align with normal text */
+    margin: 1rem 0; /* Add vertical spacing */
+    list-style-position: outside; /* Keep bullets in margin */
+}
+
+section li {
+    padding-left: 0.5rem; /* Add space between bullet and text */
+    margin-bottom: 0.5rem; /* Space between list items */
+}
+
+.welcomesign {
+    text-align: left;
+}
+
+.welcometext {
+    text-align: left;
 }
